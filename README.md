@@ -11,7 +11,6 @@
 ## 面试基础
 
 <table>
-    <caption style="font-size:25px; text-algin:center">面试基础知识</caption>
     <tr>
         <td>课目</td>
         <td>细分</td>
