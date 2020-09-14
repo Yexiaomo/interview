@@ -33,7 +33,7 @@
         <td><a href="">查看</a></td>
     </tr>
     <tr>
-        <td>高并发编程</td>
+        <td>多线程与高并发</td>
         <td><a href="">阅读</a></td>
         <td><a href="">查看</a></td>
     </tr>
@@ -74,33 +74,33 @@
         <td><a href="">查看</a></td>
     </tr>
     <tr>
-        <td>查询</td>
+        <td>查找</td>
         <td><a href="">阅读</a></td>
         <td><a href="">查看</a></td>
     </tr>
     <tr>
-        <td rowspan="5">MySQL数据库</td>
-        <td>范式</td>
+        <td rowspan="5">数据库</td>
+        <td>范式,MySQL架构</td>
         <td><a href="">阅读</a></td>
         <td><a href="">查看</a></td>
     </tr>
     <tr>
-        <td>DML</td>
+        <td>DDL,DQL,DML,DCL</td>
         <td><a href="">阅读</a></td>
         <td><a href="">查看</a></td>
     </tr>
     <tr>
-        <td>索引</td>
+        <td>索引,视图,触发器</td>
         <td><a href="">阅读</a></td>
         <td><a href="">查看</a></td>
     </tr>
     <tr>
-        <td>日志,事务,锁,引擎</td>
+        <td>事务,锁,引擎</td>
         <td><a href="">阅读</a></td>
         <td><a href="">查看</a></td>
     </tr>
     <tr>
-        <td>优化</td>
+        <td>日志,优化</td>
         <td><a href="">阅读</a></td>
         <td><a href="">查看</a></td>
     </tr>
@@ -162,13 +162,18 @@
         <td><a href="">查看</a></td>
     </tr>
     <tr>
-        <td rowspan="2">服务端技术</td>
-        <td>Redis</td>
+        <td rowspan="3">服务端技术</td>
+        <td>redis</td>
         <td><a href="">阅读</a></td>
         <td><a href="">查看</a></td>
     </tr>
     <tr>
         <td>kafka</td>
+        <td><a href="">阅读</a></td>
+        <td><a href="">查看</a></td>
+    </tr>
+    <tr>
+        <td>shell</td>
         <td><a href="">阅读</a></td>
         <td><a href="">查看</a></td>
     </tr>
@@ -179,3 +184,10 @@
         <td><a href="">查看</a></td>
     </tr>
 </table>
+
+## 算法
+
+**题目来自剑指offer, 腾讯50题, leetcode-字节跳动探索计划**
+
+|类型|数学|数组|链表|查找|动态规划|贪心|设计|
+|-|-|-|-|-|-|-|-|
