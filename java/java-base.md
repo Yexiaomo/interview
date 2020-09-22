@@ -62,12 +62,12 @@ public interface DemoInterface {
 当一个类实现该接口时，可以继承到该接口中的默认方法
 ```java
 public class Demo implements DemoInterface {
-	public static void main(String[] args){
-		Demo demo = new Demo();
-		demo.say("world");
-	}
-	@Override
-	public void test(){}
+    public static void main(String[] args){
+        Demo demo = new Demo();
+        demo.say("world");
+    }
+    @Override
+    public void test(){}
 }
 
 >>Hello world
@@ -99,7 +99,7 @@ public @interface Target {
     ElementType[] value(); 
 } 
 public enum ElementType { 
-  TYPE,FIELD,METHOD,PARAMETED,CONSTRUCTOR,LOCAL_VARIABLE,ANNOCATION_TYPE,PACKAGE,TYPE_PARAMETER,TYPE_USE 
+    TYPE,FIELD,METHOD,PARAMETED,CONSTRUCTOR,LOCAL_VARIABLE,ANNOCATION_TYPE,PACKAGE,TYPE_PARAMETER,TYPE_USE 
 } 
 ```
 例如，如下的注解使用@Target标注，表明MyDemo注解就只能作用在类/接口和方法上。
@@ -111,10 +111,10 @@ public @interface MyDemo {
 - @Retention : 保留策略, 定义了该注解被保留的时间长短,其源码
 ```java
 public @interface Retention {
-	RetentionPolicy value();
+    RetentionPolicy value();
 }
 public enum RetentionPolicy {
-	SOURCE, CLASS, RUNTIME
+    SOURCE, CLASS, RUNTIME
 }
 ```
 `SOURCE`表明在源文件中保留(即源文件保留, 编译器将丢掉), `CLASS`表明在class文件中有效(即class保留, VM将丢掉), `RUNTIME`表明在运行时有效(即运行时保留)
@@ -147,4 +147,4 @@ public @interface Inherited {
 
 反射举例及优缺点[看这个->JVM的1.5章节](https://blog.csdn.net/qq_32603745/article/details/103588358)
 
-	------------------------**持续更新中**-------------------
+    ------------------------**持续更新中**-------------------
