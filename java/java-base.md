@@ -62,12 +62,12 @@ public interface DemoInterface {
 当一个类实现该接口时，可以继承到该接口中的默认方法
 ```java
 public class Demo implements DemoInterface {
-    public static void main(String[] args){
-        Demo demo = new Demo();
-        demo.say("world");
-    }
-    @Override
-    public void test(){}
+	public static void main(String[] args){
+		Demo demo = new Demo();
+		demo.say("world");
+	}
+	@Override
+	public void test(){}
 }
 
 >>Hello world
@@ -99,7 +99,7 @@ public @interface Target {
     ElementType[] value(); 
 } 
 public enum ElementType { 
-    TYPE,FIELD,METHOD,PARAMETED,CONSTRUCTOR,LOCAL_VARIABLE,ANNOCATION_TYPE,PACKAGE,TYPE_PARAMETER,TYPE_USE 
+  TYPE,FIELD,METHOD,PARAMETED,CONSTRUCTOR,LOCAL_VARIABLE,ANNOCATION_TYPE,PACKAGE,TYPE_PARAMETER,TYPE_USE 
 } 
 ```
 例如，如下的注解使用@Target标注，表明MyDemo注解就只能作用在类/接口和方法上。
@@ -111,10 +111,10 @@ public @interface MyDemo {
 - @Retention : 保留策略, 定义了该注解被保留的时间长短,其源码
 ```java
 public @interface Retention {
-    RetentionPolicy value();
+	RetentionPolicy value();
 }
 public enum RetentionPolicy {
-    SOURCE, CLASS, RUNTIME
+	SOURCE, CLASS, RUNTIME
 }
 ```
 `SOURCE`表明在源文件中保留(即源文件保留, 编译器将丢掉), `CLASS`表明在class文件中有效(即class保留, VM将丢掉), `RUNTIME`表明在运行时有效(即运行时保留)
@@ -140,11 +140,36 @@ public @interface Inherited {
 
 反射相关的类
 
-- `Class` : 表示类, 用于获取类相关信息
-- `Field` : 表示成员变量, 用于获取类的实例变量和静态变量等
-- `Method` : 表示方法, 用于获取类中的`方法参数`和`方法类型`
-- `Constructor` : 表示构造器, 用于获取构造器的方法参数和和类型等
+- Class : 表示类, 用于获取类相关信息
+- Field : 表示成员变量, 用于获取类的实例变量和静态变量等
+- Method : 表示方法, 用于获取类中的`方法参数`和`方法类型`
+- Constructor : 表示构造器, 用于获取构造器的方法参数和和类型等
 
 反射举例及优缺点[看这个->JVM的1.5章节](https://blog.csdn.net/qq_32603745/article/details/103588358)
 
-    ------------------------**持续更新中**-------------------
+#### 1.6 Java中Exception和Error有什么区别?
+答: 主要区别为
+
+- `Exception`是程序正常运行中预料到可能会出现的错误, 并且可以被捕捉并被处理
+- `Error`是程序正常情况下不辉发生的错误,Error会导致JVM处于一种不可恢复的状态, 不需要捕捉处理, 比如`OutOfMemoryOfError`
+
+**扩展**
+① Exception又分为`运行时异常`和`编译时异常`, 
+
+- 编译时异常表示当前方法体内部抛出一个异常, 编译器检测到这段代码时判断可能会出现异常, 所以要求我们必须对异常进行相应处理, 捕捉或交给上层处理. 如 文件读取时的IO异常
+- 运行时异常表示程序在运行时出现的异常, 如空指针异常, 数组越界, 数字转换异常以算术异常.
+
+② 捕捉原则:
+
+- 尽可能捕捉详细的异常, 而不是使用Exception
+- 当本模块捕捉到但不知怎么处理异常时,可交给上层模块.
+- 捕捉异常后应有日志记录, 方便日后排查
+- 不要使用`try-catch`包住整段代码
+
+③ 深度问题: `NoClassDefFoundError` 和 `ClassNotFoundException` 有什么区别?
+
+- `ClassNotFoundException` : 当我们使用Class.forName动态加载类时, 传入类名, 但没有被找到,就会出现这个异常.
+- `NoClassDefFoundError` : 当JVM或者ClassLoader实例尝试加载类(或正常方法调用, 或new 创建新对象) 时, 找不到类定义. 但要查找的类在编译时的确存在, 运行时却找不到, 这个时候就会出现ClassNotFoundError. 一般是因为打包的时候漏掉了部分类或者Jar包被篡改损坏.
+
+
+	------------------------**持续更新中**-------------------
