@@ -93,7 +93,7 @@ public class Demo implements DemoInterface {
 #### 1.4 Java中元注解有哪些?
 答:Java中提供了`4`个元注解, 元注解的作用是负责注解其他注解
 
-- @Target : 说明注解所修饰的对象范围,其值在ElementType中, 其源码
+- `@Target` : 说明注解所修饰的对象范围,其值在ElementType中, 其源码
 ```java
 public @interface Target { 
     ElementType[] value(); 
@@ -108,7 +108,7 @@ public enum ElementType {
 public @interface MyDemo { 
 }
 ```
-- @Retention : 保留策略, 定义了该注解被保留的时间长短,其源码
+- `@Retention` : 保留策略, 定义了该注解被保留的时间长短,其源码
 ```java
 public @interface Retention {
 	RetentionPolicy value();
@@ -119,17 +119,29 @@ public enum RetentionPolicy {
 ```
 `SOURCE`表明在源文件中保留(即源文件保留, 编译器将丢掉), `CLASS`表明在class文件中有效(即class保留, VM将丢掉), `RUNTIME`表明在运行时有效(即运行时保留)
 
-- @Documented : 用于描述其他类型的annotation应该被作为被标注的程序成员的公共API,因此可以被javadoc此类的工具文档化, Documented是一个标记注解,没有成员,其源码
+- `@Documented` : 用于描述其他类型的annotation应该被作为被标注的程序成员的公共API,因此可以被javadoc此类的工具文档化, Documented是一个标记注解,没有成员,其源码
 ```java
 public @interface Documented {
 }
 ```
-- @Inherited : 也是一个标记注解, 其表明被注解的类型是被继承的, 如果一个使用@Inherited修饰的annotation类型被用于一个class, 则这个annotation将被用于该class的子类.
+- `@Inherited` : 也是一个标记注解, 其表明被注解的类型是被继承的, 如果一个使用@Inherited修饰的annotation类型被用于一个class, 则这个annotation将被用于该class的子类.
 ```java
 public @interface Inherited {
 }
 ```
-
+**扩展**
+(1) 注解的作用: 代替繁杂的配置文件,简化开发, 在SpringBoot中大量使用. 
+(2) 怎么定义一个注解: 从上面的例子也可以看出, 使用`@interface`	, 那怎么定义注解的属性?  eg. 
+```java
+public @interface Demo{
+	String val1();
+	int val2();
+}
+//使用注解,设置属性,
+@Demo(val1 = "Hello", val2 = 1)
+public class TestClass{
+}
+```
 #### 1.5 Java反射机制
 指在运行过程中, 对于任意一个类都能知道这个类的属性和方法; 对于任意一个对象都能调用它的任意一个方法和属性. 即动态获取信息和动态调用对象方法的功能称为为`反射机制`.  其作用:
 
@@ -156,7 +168,7 @@ public @interface Inherited {
 **扩展**
 ① Exception又分为`运行时异常`和`编译时异常`, 
 
-- 编译时异常表示当前方法体内部抛出一个异常, 编译器检测到这段代码时判断可能会出现异常, 所以要求我们必须对异常进行相应处理, 捕捉或交给上层处理. 如 文件读取时的IO异常
+- 编译时异常表示当前方法体内部抛出一个异常, 编译器检测到这段代码时判断可能会出现异常, 所以要求我们必须对异常进行相应处理, 捕捉或交给上层处理. 如 文件读取时的IO异常.
 - 运行时异常表示程序在运行时出现的异常, 如空指针异常, 数组越界, 数字转换异常以算术异常.
 
 ② 捕捉原则:
@@ -171,5 +183,17 @@ public @interface Inherited {
 - `ClassNotFoundException` : 当我们使用Class.forName动态加载类时, 传入类名, 但没有被找到,就会出现这个异常.
 - `NoClassDefFoundError` : 当JVM或者ClassLoader实例尝试加载类(或正常方法调用, 或new 创建新对象) 时, 找不到类定义. 但要查找的类在编译时的确存在, 运行时却找不到, 这个时候就会出现ClassNotFoundError. 一般是因为打包的时候漏掉了部分类或者Jar包被篡改损坏.
 
+#### 1.7 Java中值传递和引用传递
+- `值传递` : 意味着传递了对象的一个副本, 即副本发生改变时, 影响不到源对象.
+- `引用传递` : 意味着传递了是对象的引用, 因此,当外部对引用对象的改变会反映到所有的对象上.
+
+#### 1.8 String、StringBuffer与StringBuilder的区别？
+
+#### 1.9 Java中的泛型的理解
+#### 1.10 Java序列化与反序列化的过程
+#### 1.11 equals和hashCode方法的关系？
+#### 1.12 Java和C++的区别有哪些？
+#### 1.13 静态与非静态的区别？
+#### 1.14 Java中equals方法和==的区别？
 
 	------------------------**持续更新中**-------------------
